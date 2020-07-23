@@ -1,29 +1,35 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div>
+    <A :pattern="/./"/>
+
+    <div
+      class="file"
+      v-for="(k, v) in o.v"
+      :key="v"
+    >{{v}}</div>
+
+    <B @ev="(v) => { o = v; }"/>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+  import { defineComponent, ref, SetupContext, Ref } from '@vue/composition-api';
 
-export default Vue.extend({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-});
+  import A from './components/A.vue';
+  import B from './components/B.vue';
+
+  export default defineComponent({
+    components: {
+      A,
+      B
+    },
+    setup(props: null, { emit }: SetupContext) {
+      const o: Ref<boolean[]> = ref([false]);
+
+      return {
+        o,
+        emit
+      };
+    }
+  });
 </script>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
