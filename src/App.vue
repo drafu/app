@@ -3,7 +3,6 @@
     <A :pattern="/./"/>
 
     <div
-      class="file"
       v-for="(k, v) in o.v"
       :key="v"
     >{{v}}</div>
