@@ -23,7 +23,7 @@
       B
     },
     setup(props: null, { emit }: SetupContext) {
-      const o: Ref<boolean> = ref(false);
+      const o: Ref<boolean[]> = ref([false]);
 
       return {
         o,

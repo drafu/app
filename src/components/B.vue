@@ -8,7 +8,7 @@
   export default defineComponent({
     setup(props: null, { emit }) {
       onMounted(() => {
-        emit('ev', true);
+        emit('ev', [true]);
       });
 
       return {};
